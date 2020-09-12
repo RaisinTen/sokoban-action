@@ -84,8 +84,8 @@
 </table>
 
 <h1>
-  <a href="http://github.com">:arrow_up:</a>
-  <a href="http://github.com">:arrow_down:</a>
-  <a href="http://github.com">:arrow_right:</a>
-  <a href="http://github.com">:arrow_left:</a>
+  <a href="https://github.com/RaisinTen/sokoban-action/issues/new?title=$UP&body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">:arrow_up:</a>
+  <a href="https://github.com/RaisinTen/sokoban-action/issues/new?title=$DOWN&body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">:arrow_down:</a>
+  <a href="https://github.com/RaisinTen/sokoban-action/issues/new?title=$RIGHT&body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">:arrow_right:</a>
+  <a href="https://github.com/RaisinTen/sokoban-action/issues/new?title=$LEFT&body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">:arrow_left:</a>
 </h1>

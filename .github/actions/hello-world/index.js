@@ -1,11 +1,12 @@
 const core = require("@actions/core");
 
-const firstGreeting = core.getInput("first-greeting");
-const secondGreeting = core.getInput("second-greeting");
-const thirdGreeting = core.getInput("third-greeting");
-
-console.log(`Hello ${ firstGreeting }`);
-console.log(`Hello ${ secondGreeting }`);
-if(thirdGreeting) {
-    console.log(`Hello ${ thirdGreeting }`);
+async function run() {
+    try {
+        const name = core.getInput("name");
+        console.log(`Hello ${ name }`);
+    } catch(err) {
+        core.setFailed(err.message);
+    }
 }
+
+run();

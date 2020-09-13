@@ -10,12 +10,10 @@ jobs:
     if: startsWith(github.event.issue.title, '$')
     steps:
       - uses: actions/checkout@v2
-      - name: set env variables
-        run: |
-            echo ::set-env name=REPOSITORY::${{ github.repository }}
-            echo ::set-env name=EVENT_ISSUE_NUMBER::${{ github.event.issue.number }}
-            echo ::set-env name=EVENT_USER_LOGIN::${{ github.event.issue.user.login }}
       - name: sokoban
         uses: ./.github/actions/sokoban
         with:
+            issue-number: ${{ github.event.issue.number }}
+            issue-user: ${{ github.event.issue.user.login }}
+            move: ${{ github.event.issue.title }}
             repo-token: ${{ secrets.GITHUB_TOKEN }}

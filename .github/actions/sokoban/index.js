@@ -3,20 +3,24 @@ const github = require("@actions/github");
 
 async function run() {
     try {
-        const token = core.getInput("repo-token");
         const octokit = github.getOctokit(token);
+
+        const issueNumber = core.getInput("issue-number");
+        const issueUser = core.getInput("issue-user");
+        const move = core.getInput("move");
+        const repoToken = core.getInput("repo-token");
 
         octokit.issues.createComment({
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
-            issue_number: process.env.EVENT_ISSUE_NUMBER,
-            body: `Oh Hai @${ process.env.EVENT_USER_LOGIN }!`
+            issue_number: issueNumber,
+            body: `Oh Hai @${ issueUser }!`
         });
 
         octokit.issues.update({
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
-            issue_number: process.env.EVENT_ISSUE_NUMBER,
+            issue_number: issueNumber,
             state: "closed"
         });
     } catch(err) {

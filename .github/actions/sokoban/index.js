@@ -3,7 +3,15 @@ const github = require("@actions/github");
 
 async function run() {
     try {
-        console.log("repository:", process.env.REPOSITORY);
+        const token = core.getInput("repo-token");
+        const octokit = github.getOctokit(token);
+
+        octokit.issues.createComment({
+            owner: process.env.EVENT_USER_LOGIN,
+            repo: process.env.REPOSITORY,
+            issue_number: process.env.EVENT_ISSUE_NUMBER,
+            body: "Oh Hai Mark!"
+        });
     } catch(err) {
         core.setFailed(err.message);
     }

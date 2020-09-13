@@ -2,6 +2,10 @@ name: "Sokoban Action"
 
 description: "To play Sokoban game using GitHub Actions"
 
+inputs:
+    repo-token:
+        description: "Token with permissions to do repo things"
+
 runs:
     using: "node12"
     main: "index.js"

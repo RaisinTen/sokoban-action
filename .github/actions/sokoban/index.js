@@ -61,7 +61,7 @@ async function run() {
         console.log("move:", move);
 
         const readmeContent = fs.readFileSync("./README.md", "utf-8").split("\n");
-        readFileSync.push(":smiley:");
+        readmeContent.push(":smiley:");
         fs.writeFileSync("./README.md", readmeContent.join("\n"));
 
         await commitFile();

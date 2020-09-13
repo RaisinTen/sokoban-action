@@ -10,7 +10,14 @@ async function run() {
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
             issue_number: process.env.EVENT_ISSUE_NUMBER,
-            body: `Oh Hai ${ process.env.EVENT_USER_LOGIN }!`
+            body: `Oh Hai @${ process.env.EVENT_USER_LOGIN }!`
+        });
+
+        octokit.update({
+            owner: github.context.repo.owner,
+            repo: github.context.repo.repo,
+            issue_number: process.env.EVENT_ISSUE_NUMBER,
+            state: "closed"
         });
     } catch(err) {
         core.setFailed(err.message);

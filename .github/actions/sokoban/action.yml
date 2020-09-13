@@ -1,12 +1,6 @@
-name: "my hello action"
+name: "Sokoban Action"
 
-description: "sat hello with GitHub Actions"
-
-inputs:
-    name:
-        description: "Who would you like to greet in the console"
-        required: true
-        default: "Octocat"
+description: "To play Sokoban game using GitHub Actions"
 
 runs:
     using: "node12"

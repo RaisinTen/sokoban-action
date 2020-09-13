@@ -1,9 +1,9 @@
 const core = require("@actions/core");
+const github = require("@actions/github");
 
 async function run() {
     try {
-        const name = core.getInput("name");
-        console.log(`Hello ${ name }`);
+        console.log("repository:", process.env.REPOSITORY);
     } catch(err) {
         core.setFailed(err.message);
     }

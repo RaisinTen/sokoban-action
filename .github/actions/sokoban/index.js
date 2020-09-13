@@ -7,8 +7,8 @@ async function run() {
         const octokit = github.getOctokit(token);
 
         octokit.issues.createComment({
-            owner: "RaisinTen",
-            repo: process.env.REPOSITORY,
+            owner: github.context.repo.owner,
+            repo: github.context.repo.repo,
             issue_number: process.env.EVENT_ISSUE_NUMBER,
             body: "Oh Hai Mark!"
         });

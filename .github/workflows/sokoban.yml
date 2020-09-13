@@ -1,0 +1,14 @@
+name: Sokoban
+
+on:
+  issues:
+    types: [opened]
+    
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, '$')
+    steps:
+      - uses: actions/checkout@v2
+      - name: hello-action
+        uses: ./.github/actions/hello-world

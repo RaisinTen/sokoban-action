@@ -3,7 +3,6 @@ const github = require("@actions/github");
 const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
-const { Toolkit } = require("actions-toolkit");
 
 const exec = (cmd, args = []) =>
   new Promise((resolve, reject) => {

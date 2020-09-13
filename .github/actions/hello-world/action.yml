@@ -1,0 +1,13 @@
+name: "my hello action"
+
+description: "sat hello with GitHub Actions"
+
+inputs:
+    name:
+        description: "Who would you like to greet in the console"
+        required: true
+        default: "Octocat"
+
+runs:
+    using: "node12"
+    main: "dist/index.js"

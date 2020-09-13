@@ -13,7 +13,7 @@ async function run() {
             body: `Oh Hai @${ process.env.EVENT_USER_LOGIN }!`
         });
 
-        octokit.update({
+        octokit.issues.update({
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
             issue_number: process.env.EVENT_ISSUE_NUMBER,

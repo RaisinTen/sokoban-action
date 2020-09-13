@@ -10,5 +10,5 @@ jobs:
     if: startsWith(github.event.issue.title, '$')
     steps:
       - uses: actions/checkout@v2
-      - name: hello-action
-        uses: ./.github/actions/hello-world
+      - name: sokoban
+        uses: ./.github/actions/sokoban

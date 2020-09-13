@@ -10,7 +10,7 @@ inputs:
         description: "User who created the issue"
         required: true
     move:
-        description: "move: $UP, $DOWN, $RIGHT or $LEFT"
+        description: "move: $U, $D, $R or $L"
         required: true
     repo-token:
         description: "Token with permissions to do repo things"

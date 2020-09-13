@@ -5,7 +5,7 @@ async function run() {
     try {
         const issueNumber = core.getInput("issue-number");
         const issueUser = core.getInput("issue-user");
-        const move = core.getInput("move");
+        const move = core.getInput("move")[1];
         const repoToken = core.getInput("repo-token");
 
         const octokit = github.getOctokit(repoToken);
@@ -23,6 +23,8 @@ async function run() {
             issue_number: issueNumber,
             state: "closed"
         });
+
+        console.log("move:", move);
     } catch(err) {
         core.setFailed(err.message);
     }

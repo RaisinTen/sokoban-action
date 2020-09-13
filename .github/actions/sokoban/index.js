@@ -10,7 +10,7 @@ async function run() {
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
             issue_number: process.env.EVENT_ISSUE_NUMBER,
-            body: "Oh Hai Mark!"
+            body: `Oh Hai ${ process.env.EVENT_USER_LOGIN }!`
         });
     } catch(err) {
         core.setFailed(err.message);

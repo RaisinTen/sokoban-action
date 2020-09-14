@@ -37,79 +37,110 @@ const commitFile = async () => {
     await exec("git", ["push"]);
 };
 
-// parse the contents of ./game.state and return board
-async function parse() {
-    const gameStateInput = fs.readFileSync("./game.state", "utf-8").split("\n");
+class Game {
+    // initialize members
+    constructor() {
 
-    /*
-     * FLOOR            = 0
-     * WALL             = 1
-     * OCTOCAT          = 2
-     * BOX              = 3
-     * GOAL             = 4
-     * OCTOCATONGOAL    = 5
-     * BOXONGOAL        = 6
-     */
+        console.log("constructor called");
 
-    const NUMTOOBJ = [
-        "FLOOR",
-        "WALL",
-        "OCTOCAT",
-        "BOX",
-        "GOAL",
-        "OCTOCATONGOAL",
-        "BOXONGOAL",
-    ];
-
-    const board = [];
-
-    for(row of gameStateInput) {
-        const temp = [];
-        for(key of row) {
-            temp.push(NUMTOOBJ[key]);
-        }
-        board.push(temp.join(" "));
+        this.board = [];
+        this.message = "";
     }
 
-    console.log(board.join("\n"));
+    // reads from game files to fill up the board
+    fillBoard = () => {
 
-    return board;
+        console.log("fillBoard called");
+
+        const gameStateInput = fs.readFileSync("./game.state", "utf-8").split("\n");
+
+        /*
+         * FLOOR            = 0
+         * WALL             = 1
+         * OCTOCAT          = 2
+         * BOX              = 3
+         * GOAL             = 4
+         * OCTOCATONGOAL    = 5
+         * BOXONGOAL        = 6
+         */
+
+        const NUMTOOBJ = [
+            "FLOOR",
+            "WALL",
+            "OCTOCAT",
+            "BOX",
+            "GOAL",
+            "OCTOCATONGOAL",
+            "BOXONGOAL",
+        ];
+
+        for(row of gameStateInput) {
+
+            const temp = [];
+
+            for(key of row) {
+                temp.push(NUMTOOBJ[key]);
+            }
+
+            board.push(temp);
+        }
+
+        console.table(board);
+    }
+
+    makeMove = (move) => {
+
+        console.log("makeMove called");
+
+        ;
+    }
+
+    commit = async() => {
+
+        console.log("commit called");
+
+        if(this.message === "success") {
+            await commitFile();
+        }
+    }
+
+    getMessage = () => {
+
+        console.log("getMessage called");
+
+        return this.message;
+    }
 }
 
 // to handle the move by issueUser and respond with a message
 async play(move, issueUser) {
-    
-    // read board
-    
-    ;
+
+    // game object
+
+    const game = new Game();
+
+    // fill board
+
+    game.fillBoard();
 
     // make move
-
-    ;
+    
+    game.makeMove(move);
 
     // commit files
 
-    ;
-
-    // set message
-
-    const message = `Oh Hi @${ issueUser }`;
+    await game.commit();
 
     // return message
 
-    return  message;
-
-    /*
-    const readmeContent = fs.readFileSync("./README.md", "utf-8").split("\n");
-    readmeContent.push(":smiley:");
-    fs.writeFileSync("./README.md", readmeContent.join("\n"));
-    await commitFile();
-    */
+    return `@${ issueUser } ${ game.getMessage() }`;
 }
 
 // entry point
 async function run() {
+
     try {
+
         // action inputs using core
         const issueNumber = core.getInput("issue-number"); // number of the issue
         const issueUser = core.getInput("issue-user"); // user who created the issue

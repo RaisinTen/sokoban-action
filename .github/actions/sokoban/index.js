@@ -48,6 +48,7 @@ class Game {
         this.move = move; // move to be made
         this.board = []; // game board
         this.message = "move made successfully!"; // issue reply
+        this.boxMoved = false; // stores whether a box is moved in this state
     }
 
     // reads from game files to fill up the board
@@ -141,6 +142,7 @@ class Game {
                 if(rownn < 0 || rownn >= this.board.length || colnn < 0 || colnn >= this.board[0].length) {
                     this.message = "can't go beyond the board!";
                 } else if(this.board[rownn][colnn] === "FLOOR" || this.board[rownn][colnn] === "GOAL") {
+                    this.boxMoved = true;
                     this.board[rownn][colnn] = "BOX" + (this.board[rownn][colnn] === "FLOOR" ? "" : "ONGOAL");
                     this.board[rown][coln] = "OCTOCAT" + (this.board[rown][coln] === "BOX" ? "" : "ONGOAL");
                     this.board[row][col] = nextValue;
@@ -151,11 +153,69 @@ class Game {
         }
     }
 
-    moveBack = () => {
+    moveBackInDirection = (row, col, rown, coln) => {
+        
+        console.log("moveBackInDirection called");
+
+        this.board[row][col] = this.board[row][col] === "OCTOCAT" ? "FLOOR" : "GOAL";
+        this.board[rown][coln] = this.board[rown][coln] === "FLOOR" ? "OCTOCAT" : "OCTOCATONGOAL";
+    }
+
+    moveBoxInDirection = (row, col, rown, coln) => {
+        
+        console.log("moveBoxInDirection called");
+
+        this.board[row][col] = this.board[row][col] === "BOX" ? "FLOOR" : "GOAL";
+        this.board[rown][coln] = this.board[rown][coln] === "FLOOR" ? "BOX" : "BOXONGOAL";
+    }
+
+    moveBack = (row, col) => {
 
         console.log("moveBack called");
 
-        ;
+        const gameMoves = fs.readFileSync("./game.moves", "utf-8").split("\n").filter((line) => line !== "");
+
+        if(gameMoves.length === 0) {
+            
+            this.message = "no previous move, can't go back!";
+        
+        } else {
+            
+            const lastMove = gameMoves[gameMoves.length - 1][0];
+            const boxMoved = gameMoves[gameMoves.length - 1][1] === "Y";
+
+            switch(this.move) {
+                case "U":
+                    this.moveBackInDirection(row, col, row + 1, col);
+                    break;
+                case "D":
+                    this.moveBackInDirection(row, col, row - 1, col);
+                    break;
+                case "R":
+                    this.moveBackInDirection(row, col, row, col - 1);
+                    break;
+                case "L":
+                    this.moveBackInDirection(row, col, row, col + 1);
+                    break;
+            }
+
+            if(boxMoved) {
+                switch(this.move) {
+                    case "U":
+                        this.moveBoxInDirection(row - 1, col, row, col);
+                        break;
+                    case "D":
+                        this.moveBoxInDirection(row + 1, col, row - 1, col);
+                        break;
+                    case "R":
+                        this.moveBoxInDirection(row, col + 1, row, col);
+                        break;
+                    case "L":
+                        this.moveBoxInDirection(row, col - 1, row, col);
+                        break;
+                }
+            }
+        }
     }
 
     // makes move
@@ -182,9 +242,11 @@ class Game {
                 this.moveInDirection(row, col, row, col - 1, row, col - 2);
                 break;
             case "B":
-                this.moveBack();
+                this.moveBack(row, col);
                 break;
         }
+
+        // TODO: solved? new board
 
         console.log("After move:");
         console.table(this.board);
@@ -232,7 +294,7 @@ class Game {
         if(this.move === "B") {
             gameMoves.pop();
         } else {
-            gameMoves.push(this.move);
+            gameMoves.push(this.move + (this.boxMoved ? "Y" : "N"));
         }
 
         console.log("game.moves now:");

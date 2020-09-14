@@ -231,7 +231,7 @@ class Game {
 
             this.updateGame();
 
-            // await commitFile();
+            await commitFile();
         }
     }
 

@@ -49,13 +49,13 @@
             <img src="./images/goal.png">
         </td>
         <td>
+            <img src="./images/goal.png">
+        </td>
+        <td>
             <img src="./images/characterOnGoal.png">
         </td>
         <td>
-            <img src="./images/reached.png">
-        </td>
-        <td>
-            <img src="./images/floor.png">
+            <img src="./images/block.png">
         </td>
         <td>
             <img src="./images/wall.png">

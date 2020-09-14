@@ -231,6 +231,8 @@ class Game {
 
         if(this.move === "B") {
             gameMoves.pop();
+        } else {
+            gameMoves.push(this.move);
         }
 
         console.log("game.moves now:");

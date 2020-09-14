@@ -45,8 +45,8 @@ class Game {
 
         console.log("constructor called");
 
-        this.board = [];
-        this.message = "";
+        this.board = []; // game board
+        this.message = ""; // issue reply
     }
 
     // reads from game files to fill up the board
@@ -81,8 +81,8 @@ class Game {
 
             const temp = [];
 
-            for(const key of row) {
-                temp.push(NUMTOOBJ[key]);
+            for(const cell of row) {
+                temp.push(NUMTOOBJ[cell]);
             }
 
             this.board.push(temp);
@@ -91,13 +91,63 @@ class Game {
         console.table(this.board);
     }
 
+    // finds sokoban
+    findSokoban = () => {
+
+        console.table("findSokoban called");
+
+        let row = 0, col = 0;
+        let found = false;
+
+        for(let row = 0; row < this.board.size && !found; ++row) {
+            for(let col = 0; col < this.board[0].size && !found; ++col) {
+
+                const cell = this.board[row][col];
+
+                if(cell === "OCTOCAT" || cell === "OCTOCATONGOAL") {
+                    found = true;
+                }
+            }
+        }
+
+        return [row, col];
+    }
+
+    // moves sokoban up
+    moveUp = () => {
+        
+        console.log("moveUp called");
+
+        const pos = this.findSokoban();
+
+        console.table(pos);
+    }
+
+    // makes move
     makeMove = (move) => {
 
         console.log("makeMove called");
 
-        ;
+        switch(move) {
+            case "U":
+                this.moveUp();
+                break;
+            case "D":
+                this.moveDown();
+                break;
+            case "R":
+                this.moveRight();
+                break;
+            case "L":
+                this.moveLeft();
+                break;
+            case "B":
+                this.moveBack();
+                break;
+        }
     }
 
+    // asynchronously commits changes
     commit = async() => {
 
         console.log("commit called");
@@ -107,6 +157,7 @@ class Game {
         }
     }
 
+    // returns message
     getMessage = () => {
 
         console.log("getMessage called");

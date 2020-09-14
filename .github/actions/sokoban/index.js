@@ -217,8 +217,6 @@ class Game {
             tempboard.push(temp.join());
         }
 
-        tempboard = tempboard.join("\n");
-
         fs.writeFileSync("./game.state", tempboard.join("\n"));
     }
 

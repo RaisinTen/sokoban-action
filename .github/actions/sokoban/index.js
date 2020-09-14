@@ -105,20 +105,21 @@ class Game {
                 const cell = this.board[row][col];
 
                 if(cell === "OCTOCAT" || cell === "OCTOCATONGOAL") {
-                    return [row, col];
+                    return {
+                        row: row,
+                        col: col
+                    };
                 }
             }
         }
     }
 
     // moves sokoban up
-    moveUp = () => {
+    moveUp = (pos) => {
         
         console.log("moveUp called");
 
-        const pos = this.findSokoban();
-
-        console.table(pos);
+        ;
     }
 
     // makes move
@@ -126,21 +127,24 @@ class Game {
 
         console.log("makeMove called");
 
+        const pos = this.findSokoban();
+        console.table(pos);
+
         switch(move) {
             case "U":
-                this.moveUp();
+                this.moveUp(pos);
                 break;
             case "D":
-                this.moveDown();
+                this.moveDown(pos);
                 break;
             case "R":
-                this.moveRight();
+                this.moveRight(pos);
                 break;
             case "L":
-                this.moveLeft();
+                this.moveLeft(pos);
                 break;
             case "B":
-                this.moveBack();
+                this.moveBack(pos);
                 break;
         }
     }

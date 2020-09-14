@@ -217,7 +217,7 @@ class Game {
             tempboard.push(temp.join());
         }
 
-        tempboard.join("\n");
+        tempboard = tempboard.join("\n");
 
         console.log("new game.state");
         console.log(tempboard);

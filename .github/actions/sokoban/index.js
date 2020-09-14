@@ -246,7 +246,7 @@ class Game {
 
         console.log("updateReadme called");
 
-        const gameString = "<table>
+        const gameString = `<table>
   <tr>
     <td>
       <img src="./images/wall.png">
@@ -327,7 +327,7 @@ class Game {
       <img src="./images/wall.png">
     </td>
   </tr>
-</table>";
+</table>`;
 
         const finalReadmeString =
 `# Sokoban Action

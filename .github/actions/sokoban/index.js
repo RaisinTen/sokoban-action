@@ -46,7 +46,7 @@ class Game {
         console.log("constructor called");
 
         this.board = []; // game board
-        this.message = ""; // issue reply
+        this.message = "move made successfully!"; // issue reply
     }
 
     // reads from game files to fill up the board
@@ -114,10 +114,44 @@ class Game {
         }
     }
 
-    // moves sokoban up
-    moveUp = (pos) => {
+    // move made in given direction
+    moveInDirection = (row, col, rown, coln, rownn, colnn) => {
         
-        console.log("moveUp called");
+        console.log("moveInDirection called");
+
+        const nextValue = this.board[row][col] === "OCTOCAT" ? "FLOOR" : "GOAL";
+
+        if(rown < 0 || rown >= this.board.length || coln < 0 || coln >= this.board[0].length) {
+            this.message = "can't go beyond the board!";
+            return;
+        }
+
+        switch(this.board[rown][coln]) {
+            case "WALL":
+                this.message = "obstacle ahead, can't move that way!";
+                return;
+            case "FLOOR":
+                this.board[row][col] = nextValue;
+                this.board[rown][coln] = "OCTOCAT";
+                return;
+            case "BOX":
+            case "BOXONGOAL":
+                if(rownn < 0 || rownn >= this.board.length || colnn < 0 || colnn >= this.board[0].length) {
+                    this.message = "can't go beyond the board!";
+                } else if(this.board[rownn][colnn] === "FLOOR" || this.board[rownn][colnn] === "GOAL") {
+                    this.board[rownn][colnn] = "BOX" + (this.board[rownn][colnn] === "FLOOR" ? "" : "ONGOAL");
+                    this.board[rown][coln] = "OCTOCAT" + (this.board[rown][coln] === "BOX" ? "" : "ONGOAL");
+                    this.board[row][col] = nextValue;
+                } else {
+                    this.message = "obstacle ahead, can't move that way!";
+                }
+                break;
+        }
+    }
+
+    moveBack = () => {
+
+        console.log("moveBack called");
 
         ;
     }
@@ -130,21 +164,23 @@ class Game {
         const pos = this.findSokoban();
         console.table(pos);
 
+        const {row: row, col: col} = pos;
+
         switch(move) {
             case "U":
-                this.moveUp(pos);
+                this.moveInDirection(row, col, row - 1, col, row - 2, col);
                 break;
             case "D":
-                this.moveDown(pos);
+                this.moveInDirection(row, col, row + 1, col, row + 2, col);
                 break;
             case "R":
-                this.moveRight(pos);
+                this.moveInDirection(row, col, row, col + 1, row, col + 2);
                 break;
             case "L":
-                this.moveLeft(pos);
+                this.moveInDirection(row, col, row, col - 1, row, col - 2);
                 break;
             case "B":
-                this.moveBack(pos);
+                this.moveBack();
                 break;
         }
     }
@@ -154,8 +190,8 @@ class Game {
 
         console.log("commit called");
 
-        if(this.message === "success") {
-            await commitFile();
+        if(this.message === "move made successfully!") {
+            // await commitFile();
         }
     }
 

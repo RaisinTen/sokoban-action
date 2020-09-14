@@ -277,12 +277,14 @@ class Game {
                 break;
         }
 
-        if(this.isSolved()) {
-            this.newGame();
-        }
-
         console.log("After move:");
         console.table(this.board);
+
+        if(this.isSolved()) {
+            this.newGame();
+            console.log("New game:");
+            console.table(this.board);
+        }
     }
 
     // updates game state

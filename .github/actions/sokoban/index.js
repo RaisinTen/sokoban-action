@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
 
+// executes shell commands
 const exec = (cmd, args = []) =>
     new Promise((resolve, reject) => {
         const app = spawn(cmd, args, { stdio: "pipe" });
@@ -22,6 +23,7 @@ const exec = (cmd, args = []) =>
     app.on("error", reject);
 });
 
+// commits all files
 const commitFile = async () => {
     await exec("git", [
         "config",
@@ -35,6 +37,7 @@ const commitFile = async () => {
     await exec("git", ["push"]);
 };
 
+// parse the contents of ./game.state and return board
 async function parse() {
     const gameStateInput = fs.readFileSync("./game.state", "utf-8").split("\n");
 
@@ -58,10 +61,10 @@ async function parse() {
         "BOXONGOAL",
     ];
 
-    let board = [];
+    const board = [];
 
     for(row of gameStateInput) {
-        let temp = [];
+        const temp = [];
         for(key of row) {
             temp.push(NUMTOOBJ[key]);
         }
@@ -69,26 +72,63 @@ async function parse() {
     }
 
     console.log(board.join("\n"));
+
+    return board;
 }
 
+// to handle the move by issueUser and respond with a message
+async play(move, issueUser) {
+    
+    // read board
+    
+    ;
+
+    // make move
+
+    ;
+
+    // commit files
+
+    ;
+
+    // set message
+
+    ;
+
+    // return message
+
+    return  message;
+
+    /*
+    const readmeContent = fs.readFileSync("./README.md", "utf-8").split("\n");
+    readmeContent.push(":smiley:");
+    fs.writeFileSync("./README.md", readmeContent.join("\n"));
+    await commitFile();
+    */
+}
+
+// entry point
 async function run() {
     try {
-        const issueNumber = core.getInput("issue-number");
-        const issueUser = core.getInput("issue-user");
-        const move = core.getInput("move")[1];
-        const repoToken = core.getInput("repo-token");
+        // action inputs using core
+        const issueNumber = core.getInput("issue-number"); // number of the issue
+        const issueUser = core.getInput("issue-user"); // user who created the issue
+        const move = core.getInput("move")[1]; // move: can be $U (up), $D (down), $R (right), $L (left) or $B (back)
+        const repoToken = core.getInput("repo-token"); // repository token for octokit
 
-        const octokit = github.getOctokit(repoToken);
+        // octokit to interact with issues
+        const octokit = github.getOctokit(repoToken); // to handle issues
+        const owner = github.context.repo.owner; // owner of the repo for octokit
+        const repo = github.context.repo.repo; // repo name for octokit
 
-        const owner = github.context.repo.owner;
-        const repo = github.context.repo.repo;
+        const message = await play(move, issueUser); // handle move
 
         // reply to issue
         octokit.issues.createComment({
             owner: owner,
             repo: repo,
             issue_number: issueNumber,
-            body: `Oh Hai @${ issueUser }!`
+            body: message
         });
 
         // close issue
@@ -98,16 +138,6 @@ async function run() {
             issue_number: issueNumber,
             state: "closed"
         });
-
-        await parse();
-
-        /*
-        const readmeContent = fs.readFileSync("./README.md", "utf-8").split("\n");
-        readmeContent.push(":smiley:");
-        fs.writeFileSync("./README.md", readmeContent.join("\n"));
-        await commitFile();
-        */
-
     } catch(err) {
         core.setFailed(err.message);
     }

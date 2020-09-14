@@ -226,12 +226,12 @@ class Game {
         for(const row in this.board) {
             for(const cell in row) {
                 if(cell === "BOX") {
-                    return true;
+                    return false;
                 }
             }
         }
 
-        return false;
+        return true;
     }
 
     // makes new game

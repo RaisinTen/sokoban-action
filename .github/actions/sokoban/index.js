@@ -55,6 +55,7 @@ class Game {
         console.log("fillBoard called");
 
         const gameStateInput = fs.readFileSync("./game.state", "utf-8").split("\n");
+        console.table(gameStateInput);
 
         /*
          * FLOOR            = 0

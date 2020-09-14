@@ -76,18 +76,18 @@ class Game {
             "BOXONGOAL",
         ];
 
-        for(row of gameStateInput) {
+        for(const row of gameStateInput) {
 
             const temp = [];
 
-            for(key of row) {
+            for(const key of row) {
                 temp.push(NUMTOOBJ[key]);
             }
 
-            board.push(temp);
+            this.board.push(temp);
         }
 
-        console.table(board);
+        console.table(this.board);
     }
 
     makeMove = (move) => {

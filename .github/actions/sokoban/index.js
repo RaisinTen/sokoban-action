@@ -214,8 +214,11 @@ class Game {
                 temp.push(OBJTONUM[cell]);
             }
 
-            tempboard.push(temp.join());
+            tempboard.push(temp.join(""));
         }
+
+        console.log("game.state now:");
+        console.log(tempboard.join("\n"));
 
         fs.writeFileSync("./game.state", tempboard.join("\n"));
     }
@@ -229,7 +232,7 @@ class Game {
 
             this.updateGame();
 
-            await commitFile();
+            // await commitFile();
         }
     }
 

@@ -223,8 +223,8 @@ class Game {
 
         console.log("isSolved called");
 
-        for(const row in this.board) {
-            for(const cell in row) {
+        for(const row of this.board) {
+            for(const cell of row) {
                 console.log(cell, cell === "BOX");
                 if(cell === "BOX") {
                     return false;

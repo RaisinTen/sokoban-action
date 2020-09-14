@@ -218,6 +218,36 @@ class Game {
         }
     }
 
+    // checks if game is solved
+    isSolved = () => {
+
+        console.log("isSolved called");
+
+        for(const row in this.board) {
+            for(const cell in row) {
+                if(cell === "BOX") {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    // makes new game
+    newGame = () => {
+
+        console.log("newGame called");
+
+        this.message = "congratulations! You have won the game!";
+
+        this.board = [
+            ["WALL", "WALL", "WALL", "WALL", "WALL"],
+            ["WALL", "OCTOCAT", "BOX", "GOAL", "WALL"],
+            ["WALL", "WALL", "WALL", "WALL", "WALL"],
+        ];
+    }
+
     // makes move
     makeMove = () => {
 
@@ -246,7 +276,9 @@ class Game {
                 break;
         }
 
-        // TODO: solved? new board
+        if(this.isSolved()) {
+            this.newGame();
+        }
 
         console.log("After move:");
         console.table(this.board);
@@ -288,6 +320,12 @@ class Game {
 
     // updates game.moves
     updateGameMoves = () => {
+
+        if(this.message === "congratulations! You have won the game!") {
+            // empty the file
+            fs.writeFileSync("./game.moves", "");
+            return;
+        }
 
         const gameMoves = fs.readFileSync("./game.moves", "utf-8").split("\n").filter((line) => line !== "");
 

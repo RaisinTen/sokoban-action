@@ -231,7 +231,7 @@ class Game {
 
         if(this.message === "move made successfully!") {
 
-            updateGame();
+            this.updateGame();
 
             // await commitFile();
         }

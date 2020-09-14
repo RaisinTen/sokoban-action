@@ -113,7 +113,7 @@ class Game {
 }
 
 // to handle the move by issueUser and respond with a message
-async play(move, issueUser) {
+async function play(move, issueUser) {
 
     // game object
 

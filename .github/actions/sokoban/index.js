@@ -104,15 +104,11 @@ class Game {
 
                 const cell = this.board[row][col];
 
-                console.table([row, col, cell, found]);
-
                 if(cell === "OCTOCAT" || cell === "OCTOCATONGOAL") {
-                    found = true;
+                    return [row, col];
                 }
             }
         }
-
-        return [row, col];
     }
 
     // moves sokoban up

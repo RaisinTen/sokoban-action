@@ -219,9 +219,10 @@ class Game {
 
         tempboard.join("\n");
 
-        // fs.writeFileSync("./game.state", tempboard);
+        console.log("new game.state");
+        console.log(tempboard);
 
-        console.table(tempboard);
+        // fs.writeFileSync("./game.state", tempboard);
     }
 
     // asynchronously commits changes

@@ -225,6 +225,7 @@ class Game {
 
         for(const row in this.board) {
             for(const cell in row) {
+                console.log(cell, cell === "BOX");
                 if(cell === "BOX") {
                     return false;
                 }

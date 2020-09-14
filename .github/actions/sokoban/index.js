@@ -183,6 +183,9 @@ class Game {
                 this.moveBack();
                 break;
         }
+
+        console.log("After move:");
+        console.table(this.board);
     }
 
     // asynchronously commits changes

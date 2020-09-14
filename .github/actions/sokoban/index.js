@@ -374,7 +374,7 @@ ${ gameString }
 
             this.updateGame();
 
-            // await commitFile();
+            await commitFile();
         }
     }
 

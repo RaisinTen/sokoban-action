@@ -184,7 +184,7 @@ class Game {
             const lastMove = gameMoves[gameMoves.length - 1][0];
             const boxMoved = gameMoves[gameMoves.length - 1][1] === "Y";
 
-            switch(this.move) {
+            switch(lastMove) {
                 case "U":
                     this.moveBackInDirection(row, col, row + 1, col);
                     break;
@@ -200,7 +200,7 @@ class Game {
             }
 
             if(boxMoved) {
-                switch(this.move) {
+                switch(lastMove) {
                     case "U":
                         this.moveBoxInDirection(row - 1, col, row, col);
                         break;

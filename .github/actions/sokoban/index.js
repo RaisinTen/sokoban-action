@@ -131,8 +131,9 @@ class Game {
                 this.message = "obstacle ahead, can't move that way!";
                 return;
             case "FLOOR":
+            case "GOAL":
                 this.board[row][col] = nextValue;
-                this.board[rown][coln] = "OCTOCAT";
+                this.board[rown][coln] = "OCTOCAT" + (this.board[rown][coln] === "FLOOR" ? "" : "ONGOAL");
                 return;
             case "BOX":
             case "BOXONGOAL":

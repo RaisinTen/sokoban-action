@@ -242,9 +242,10 @@ class Game {
         this.message = "congratulations! You have won the game!";
 
         this.board = [
-            ["WALL", "WALL", "WALL", "WALL", "WALL"],
-            ["WALL", "OCTOCAT", "BOX", "GOAL", "WALL"],
-            ["WALL", "WALL", "WALL", "WALL", "WALL"],
+            ["WALL", "WALL", "WALL", "WALL", "WALL", "WALL", "WALL"],
+            ["WALL", "WALL", "FLOOR", "FLOOR", "BOX", "GOAL", "WALL"],
+            ["WALL", "OCTOCATONGOAL", "BOX", "FLOOR", "FLOOR", "FLOOR", "WALL"],
+            ["WALL", "WALL", "WALL", "WALL", "WALL", "WALL", "WALL"],
         ];
     }
 

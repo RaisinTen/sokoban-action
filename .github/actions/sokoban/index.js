@@ -93,7 +93,7 @@ async play(move, issueUser) {
 
     // set message
 
-    ;
+    const message = `Oh Hi @${ issueUser }`;
 
     // return message
 

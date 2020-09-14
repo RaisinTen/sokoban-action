@@ -246,88 +246,33 @@ class Game {
 
         console.log("updateReadme called");
 
-        const gameString = `<table>
-  <tr>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/block.png">
-    </td>
-    <td>
-      <img src="./images/floor.png">
-    </td>
-    <td>
-      <img src="./images/block.png">
-    </td>
-    <td>
-      <img src="./images/floor.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/characterOnGoal.png">
-    </td>
-    <td>
-      <img src="./images/goal.png">
-    </td>
-    <td>
-      <img src="./images/reached.png">
-    </td>
-    <td>
-      <img src="./images/floor.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-    <td>
-      <img src="./images/wall.png">
-    </td>
-  </tr>
-</table>`;
+        const OBJTOIMG = {
+            "FLOOR": "floor",
+            "WALL": "wall",
+            "OCTOCAT": "character",
+            "BOX": "block",
+            "GOAL": "goal",
+            "OCTOCATONGOAL": "characterOnGoal",
+            "BOXONGOAL": "reached",
+        };
+
+        let gameString =                `<table>\n`;
+        let tabLevel = 0;
+
+        for(const row of this.board) {
+
+            gameString +=               `    <tr>\n`;
+
+            for(const cell of row) {
+                gameString +=           `        <td>\n`;
+                gameString +=           '            <img src="./images/' + OBJTOIMG[cell] + '.png">\n';
+                gameString +=           `        </td>\n`;
+            }
+
+            gameString +=               `    </tr>\n`;
+        }
+
+        gameString +=                   `</table>`;
 
         const finalReadmeString =
 `# Sokoban Action

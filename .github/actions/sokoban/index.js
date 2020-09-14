@@ -249,9 +249,9 @@ class Game {
 
         console.log("updateGame called");
 
-        updateGameState();
-        updateGameMoves();
-        updateReadme();
+        this.updateGameState();
+        this.updateGameMoves();
+        this.updateReadme();
     }
 
     // asynchronously commits changes

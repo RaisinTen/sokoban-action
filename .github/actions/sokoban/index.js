@@ -190,10 +190,10 @@ class Game {
         console.table(this.board);
     }
 
-    // updates game.state, game.moves and README.md
-    updateGame = () => {
+    // updates game state
+    updateGameState = () => {
 
-        // writing game.state
+        console.log("updateGameState called");
 
         const OBJTONUM = {
             "FLOOR": "0",
@@ -222,6 +222,36 @@ class Game {
         console.log(tempboard.join("\n"));
 
         fs.writeFileSync("./game.state", tempboard.join("\n"));
+    }
+
+    // updates game.moves
+    updateGameMoves = () => {
+
+        const gameMoves = fs.readFileSync("./game.moves", "utf-8").split("\n").filter((line) => line !== "");
+
+        if(this.move === "B") {
+            gameMoves.pop();
+        }
+
+        console.log("game.moves now:");
+        console.log(gameMoves.join("\n"));
+
+        fs.writeFileSync("./game.moves", gameMoves.join("\n"));
+    }
+
+    // updates README.md
+    updateReadme = () => {
+        ;
+    }
+
+    // updates game.state, game.moves and README.md
+    updateGame = () => {
+
+        console.log("updateGame called");
+
+        updateGameState();
+        updateGameMoves();
+        updateReadme();
     }
 
     // asynchronously commits changes

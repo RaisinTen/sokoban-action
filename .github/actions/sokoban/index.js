@@ -189,12 +189,50 @@ class Game {
         console.table(this.board);
     }
 
+    // updates game.state, game.moves and README.md
+    updateGame = () => {
+
+        // writing game.state
+
+        const OBJTONUM = {
+            "FLOOR": "0",
+            "WALL": "1",
+            "OCTOCAT": "2",
+            "BOX": "3",
+            "GOAL": "4",
+            "OCTOCATONGOAL": "5",
+            "BOXONGOAL": "6",
+        };
+
+        const tempboard = [];
+
+        for(const row of this.board) {
+            
+            const temp = [];
+
+            for(const cell of row) {
+                temp.push(OBJTONUM[cell]);
+            }
+
+            tempboard.push(temp.join());
+        }
+
+        tempboard.join("\n");
+
+        // fs.writeFileSync("./game.state", tempboard);
+
+        console.table(tempboard);
+    }
+
     // asynchronously commits changes
     commit = async() => {
 
         console.log("commit called");
 
         if(this.message === "move made successfully!") {
+
+            updateGame();
+
             // await commitFile();
         }
     }

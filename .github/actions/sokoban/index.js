@@ -41,10 +41,11 @@ const commitFile = async () => {
 
 class Game {
     // initialize members
-    constructor() {
+    constructor(move) {
 
         console.log("constructor called");
 
+        this.move = move; // move to be made
         this.board = []; // game board
         this.message = "move made successfully!"; // issue reply
     }
@@ -158,7 +159,7 @@ class Game {
     }
 
     // makes move
-    makeMove = (move) => {
+    makeMove = () => {
 
         console.log("makeMove called");
 
@@ -167,7 +168,7 @@ class Game {
 
         const {row: row, col: col} = pos;
 
-        switch(move) {
+        switch(this.move) {
             case "U":
                 this.moveInDirection(row, col, row - 1, col, row - 2, col);
                 break;
@@ -250,7 +251,7 @@ async function play(move, issueUser) {
 
     // game object
 
-    const game = new Game();
+    const game = new Game(move);
 
     // fill board
 
@@ -258,7 +259,7 @@ async function play(move, issueUser) {
 
     // make move
     
-    game.makeMove(move);
+    game.makeMove();
 
     // commit files
 

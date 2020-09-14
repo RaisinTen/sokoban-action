@@ -99,8 +99,8 @@ class Game {
         let row = 0, col = 0;
         let found = false;
 
-        for(let row = 0; row < this.board.size() && !found; ++row) {
-            for(let col = 0; col < this.board[0].size() && !found; ++col) {
+        for(let row = 0; row < this.board.length && !found; ++row) {
+            for(let col = 0; col < this.board[0].length && !found; ++col) {
 
                 const cell = this.board[row][col];
 

@@ -408,7 +408,7 @@ ${ gameString }
 
         console.log("commit called");
 
-        if(this.message === "move made successfully!") {
+        if(this.message === "move made successfully!" || this.message === "congratulations! You have won the game!") {
 
             this.updateGame();
 

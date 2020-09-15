@@ -51,12 +51,12 @@ class Game {
         this.boxMoved = false; // stores whether a box is moved in this state
     }
 
-    // reads from game files to fill up the board
-    fillBoard = () => {
+    // reads from game file to fill up the board
+    fillBoard = (gameFile) => {
 
         console.log("fillBoard called");
 
-        const gameStateInput = fs.readFileSync("./game/state", "utf-8").split("\n").filter((line) => line != "");
+        const gameStateInput = fs.readFileSync(gameFile, "utf-8").split("\n").filter((line) => line != "");
         console.table(gameStateInput);
 
         /*
@@ -242,12 +242,17 @@ class Game {
 
         this.message = "congratulations! You have won the game!";
 
-        this.board = [
-            ["WALL", "WALL", "WALL", "WALL", "WALL", "WALL", "WALL"],
-            ["WALL", "WALL", "FLOOR", "FLOOR", "BOX", "GOAL", "WALL"],
-            ["WALL", "OCTOCATONGOAL", "BOX", "FLOOR", "FLOOR", "FLOOR", "WALL"],
-            ["WALL", "WALL", "WALL", "WALL", "WALL", "WALL", "WALL"],
-        ];
+        // loading new game
+
+        const gameFiles = [];
+
+        // read in file names
+        fs.readdirSync("./game/new").forEach(fileName => gameFiles.push(fileName));
+
+        // select random file
+        const gameFile = gameFiles[Math.floor(Math.random() * gameFiles.length)];
+
+        this.fillBoard(gameFile);
     }
 
     // makes move
@@ -441,7 +446,7 @@ async function play(move, issueUser) {
 
     // fill board
 
-    game.fillBoard();
+    game.fillBoard("./game/state");
 
     // make move
     

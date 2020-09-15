@@ -250,7 +250,7 @@ class Game {
         fs.readdirSync("./game/new").forEach(fileName => gameFiles.push(fileName));
 
         // select random file
-        const gameFile = gameFiles[Math.floor(Math.random() * gameFiles.length)];
+        const gameFile = "./game/new/" + gameFiles[Math.floor(Math.random() * gameFiles.length)];
 
         this.fillBoard(gameFile);
     }

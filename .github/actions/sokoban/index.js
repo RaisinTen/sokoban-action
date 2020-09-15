@@ -276,6 +276,9 @@ class Game {
             case "B":
                 this.moveBack(row, col);
                 break;
+            default:
+                this.message = "wait, that's illegal!";
+                break;
         }
 
         console.log("After move:");

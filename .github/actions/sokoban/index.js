@@ -56,7 +56,7 @@ class Game {
 
         console.log("fillBoard called");
 
-        const gameStateInput = fs.readFileSync("./game.state", "utf-8").split("\n").filter((line) => line != "");
+        const gameStateInput = fs.readFileSync("./game/state", "utf-8").split("\n").filter((line) => line != "");
         console.table(gameStateInput);
 
         /*
@@ -173,7 +173,7 @@ class Game {
 
         console.log("moveBack called");
 
-        const gameMoves = fs.readFileSync("./game.moves", "utf-8").split("\n").filter((line) => line !== "");
+        const gameMoves = fs.readFileSync("./game/moves", "utf-8").split("\n").filter((line) => line !== "");
 
         if(gameMoves.length === 0) {
             
@@ -291,7 +291,7 @@ class Game {
         }
     }
 
-    // updates game state
+    // updates ./game/state
     updateGameState = () => {
 
         console.log("updateGameState called");
@@ -319,22 +319,22 @@ class Game {
             tempboard.push(temp.join(""));
         }
 
-        console.log("game.state now:");
+        console.log("./game/state now:");
         console.log(tempboard.join("\n"));
 
-        fs.writeFileSync("./game.state", tempboard.join("\n"));
+        fs.writeFileSync("./game/state", tempboard.join("\n"));
     }
 
-    // updates game.moves
+    // updates ./game/moves
     updateGameMoves = () => {
 
         if(this.message === "congratulations! You have won the game!") {
             // empty the file
-            fs.writeFileSync("./game.moves", "");
+            fs.writeFileSync("./game/moves", "");
             return;
         }
 
-        const gameMoves = fs.readFileSync("./game.moves", "utf-8").split("\n").filter((line) => line !== "");
+        const gameMoves = fs.readFileSync("./game/moves", "utf-8").split("\n").filter((line) => line !== "");
 
         if(this.move === "B") {
             gameMoves.pop();
@@ -342,10 +342,10 @@ class Game {
             gameMoves.push(this.move + (this.boxMoved ? "Y" : "N"));
         }
 
-        console.log("game.moves now:");
+        console.log("./game/moves now:");
         console.log(gameMoves.join("\n"));
 
-        fs.writeFileSync("./game.moves", gameMoves.join("\n"));
+        fs.writeFileSync("./game/moves", gameMoves.join("\n"));
     }
 
     // updates README.md
@@ -400,7 +400,7 @@ ${ gameString }
         fs.writeFileSync("./README.md", finalReadmeString);
     }
 
-    // updates game.state, game.moves and README.md
+    // updates ./game/state, ./game/moves and README.md
     updateGame = () => {
 
         console.log("updateGame called");

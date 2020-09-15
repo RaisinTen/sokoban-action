@@ -453,7 +453,7 @@ async function play(move, issueUser) {
 
     // return message
 
-    return `@${ issueUser } ${ game.getMessage() }`;
+    return `@${ issueUser } ${ game.getMessage() } Play your next move [here](https://github.com/RaisinTen/sokoban-action)!`;
 }
 
 // entry point

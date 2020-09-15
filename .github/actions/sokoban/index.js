@@ -79,6 +79,8 @@ class Game {
             "BOXONGOAL",
         ];
 
+        this.board = [];
+
         for(const row of gameStateInput) {
 
             const temp = [];

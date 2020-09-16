@@ -52,13 +52,13 @@
             <img src="./images/wall.png">
         </td>
         <td>
-            <img src="./images/character.png">
-        </td>
-        <td>
-            <img src="./images/reached.png">
-        </td>
-        <td>
             <img src="./images/floor.png">
+        </td>
+        <td>
+            <img src="./images/characterOnGoal.png">
+        </td>
+        <td>
+            <img src="./images/block.png">
         </td>
         <td>
             <img src="./images/floor.png">
@@ -102,3 +102,11 @@
   <a href="https://github.com/RaisinTen/sokoban-action/issues/new?title=$L&body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">:arrow_left:</a>
   <a href="https://github.com/RaisinTen/sokoban-action/issues/new?title=$B&body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">:leftwards_arrow_with_hook:</a>
 </h1>
+
+## Instructions
+
+Please refer to the [instructions](INSTRUCTIONS.md) to know how this works.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

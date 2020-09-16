@@ -17,4 +17,6 @@
 
 <a href="https://github.com/features/actions"><img src="https://avatars0.githubusercontent.com/u/44036562?s=200&v=4" width="100px"></a>
 
-This game is made using GitHub Actions! When you click on the controls, it opens a new issue with a text to trigger the workflow. The action starts running and updates the [board](README.md) and replies to your issue. Now push! :smiley:
+This game is made using GitHub Actions! When you click on the controls, it opens a new issue with a text to trigger the workflow. After you submit the issue, the action starts running and updates the [board](README.md) and replies to your issue.
+
+Now push! :smiley:

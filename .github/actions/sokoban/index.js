@@ -1,5 +1,3 @@
-"use strict";
-
 const core = require("@actions/core");
 const github = require("@actions/github");
 const fs = require("fs");
@@ -15,15 +13,15 @@ const exec = (cmd, args = []) =>
             stdout = data;
         });
         app.on("close", (code) => {
-        if (code !== 0 && !stdout.includes("nothing to commit")) {
-            err = new Error(`Invalid status code: ${code}`);
-            err.code = code;
-            return reject(err);
-        }
-        return resolve(code);
+            if (code !== 0 && !stdout.includes("nothing to commit")) {
+                err = new Error(`Invalid status code: ${ code }`);
+                err.code = code;
+                return reject(err);
+            }
+            return resolve(code);
+        });
+        app.on("error", reject);
     });
-    app.on("error", reject);
-});
 
 // commits all files
 const commitFile = async () => {

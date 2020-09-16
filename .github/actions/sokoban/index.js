@@ -244,15 +244,29 @@ class Game {
 
         this.message = "congratulations! You have won the game!";
 
+        // getting current game
+
+        let current = fs.readFileSync("./game/current", "utf-8").split("\n")[0];
+
         // loading new game
 
         const gameFiles = [];
 
-        // read in file names
-        fs.readdirSync("./game/new").forEach(fileName => gameFiles.push(fileName));
+        // read in file names except current
+        fs.readdirSync("./game/new").forEach(fileName => {
+            if(fileName !== current) {
+                gameFiles.push(fileName);
+            }
+        });
 
-        // select random file
-        const gameFile = "./game/new/" + gameFiles[Math.floor(Math.random() * gameFiles.length)];
+        // select random game file for current game
+        current = gameFiles[Math.floor(Math.random() * gameFiles.length)];
+
+        // update current
+        fs.writeFileSync("./game/current", current);
+
+        // get current game file path
+        const gameFile = "./game/new/" + current;
 
         this.fillBoard(gameFile);
     }

@@ -20,6 +20,23 @@
         <td>
             <img src="./images/wall.png">
         </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="./images/wall.png">
+        </td>
+        <td>
+            <img src="./images/character.png">
+        </td>
+        <td>
+            <img src="./images/floor.png">
+        </td>
+        <td>
+            <img src="./images/floor.png">
+        </td>
+        <td>
+            <img src="./images/floor.png">
+        </td>
         <td>
             <img src="./images/wall.png">
         </td>
@@ -29,16 +46,33 @@
             <img src="./images/wall.png">
         </td>
         <td>
-            <img src="./images/reached.png">
+            <img src="./images/floor.png">
+        </td>
+        <td>
+            <img src="./images/block.png">
         </td>
         <td>
             <img src="./images/floor.png">
         </td>
         <td>
-            <img src="./images/character.png">
+            <img src="./images/floor.png">
         </td>
         <td>
-            <img src="./images/block.png">
+            <img src="./images/wall.png">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="./images/wall.png">
+        </td>
+        <td>
+            <img src="./images/floor.png">
+        </td>
+        <td>
+            <img src="./images/floor.png">
+        </td>
+        <td>
+            <img src="./images/floor.png">
         </td>
         <td>
             <img src="./images/goal.png">
@@ -48,9 +82,6 @@
         </td>
     </tr>
     <tr>
-        <td>
-            <img src="./images/wall.png">
-        </td>
         <td>
             <img src="./images/wall.png">
         </td>

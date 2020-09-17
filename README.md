@@ -29,13 +29,13 @@
             <img src="./images/wall.png">
         </td>
         <td>
-            <img src="./images/goal.png">
-        </td>
-        <td>
-            <img src="./images/block.png">
+            <img src="./images/reached.png">
         </td>
         <td>
             <img src="./images/character.png">
+        </td>
+        <td>
+            <img src="./images/floor.png">
         </td>
         <td>
             <img src="./images/block.png">

@@ -52,13 +52,13 @@
             <img src="./images/wall.png">
         </td>
         <td>
+            <img src="./images/character.png">
+        </td>
+        <td>
+            <img src="./images/reached.png">
+        </td>
+        <td>
             <img src="./images/floor.png">
-        </td>
-        <td>
-            <img src="./images/characterOnGoal.png">
-        </td>
-        <td>
-            <img src="./images/block.png">
         </td>
         <td>
             <img src="./images/floor.png">
@@ -106,6 +106,10 @@
 ## Instructions
 
 Please refer to the [instructions](INSTRUCTIONS.md) to know how this works.
+
+## Code of Conduct
+
+Please refer to the [code of conduct](CODE_OF_CONDUCT.md) for the rules for interacting with this project.
 
 ## License
 

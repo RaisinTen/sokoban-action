@@ -417,6 +417,10 @@ ${ gameString }
 
 Please refer to the [instructions](INSTRUCTIONS.md) to know how this works.
 
+## Code of Conduct
+
+Please refer to the [code of conduct](CODE_OF_CONDUCT.md) for the rules for interacting with this project.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).`;

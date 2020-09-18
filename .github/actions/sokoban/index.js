@@ -434,6 +434,8 @@ ${ gameString }
 
 This game is made using GitHub Actions! When you click on the controls, it opens a new issue with a text to trigger the workflow. After you submit the issue, the action starts running and updates the [board](README.md) and replies to your issue.
 
+To know more about this, check out <a href="https://dev.to/raisinten/sokoban-action-ji9">the blog on <img src="https://avatars2.githubusercontent.com/u/13521919?s=200&v=4" width="25px"></a>!
+
 Now push! :smiley:
 
 ## Code of Conduct

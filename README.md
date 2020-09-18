@@ -87,13 +87,13 @@
             <img src="./images/floor.png">
         </td>
         <td>
+            <img src="./images/floor.png">
+        </td>
+        <td>
             <img src="./images/character.png">
         </td>
         <td>
             <img src="./images/block.png">
-        </td>
-        <td>
-            <img src="./images/floor.png">
         </td>
         <td>
             <img src="./images/floor.png">

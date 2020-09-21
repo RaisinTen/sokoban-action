@@ -34,7 +34,7 @@ const commitFile = async () => {
     await exec("git", ["config", "--global", "user.name", "github-actions"]);
     await exec("git", ["add", "-A"]);
     await exec("git", ["commit", "-m", "Moved"]);
-    await exec("git", ["push"]);
+    await exec("git", ["push", "-f"]);
 };
 
 class Game {

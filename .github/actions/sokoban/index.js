@@ -474,7 +474,6 @@ This project is licensed under the [MIT License](LICENSE).`;
             try{
                 await commitFile();
             } catch(err) {
-                console.log(err.message);
             }
         }
     }

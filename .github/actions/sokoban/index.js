@@ -34,7 +34,7 @@ const commitFile = async () => {
     await exec("git", ["config", "--global", "user.name", "github-actions"]);
     await exec("git", ["add", "-A"]);
     await exec("git", ["commit", "-m", "Moved"]);
-    await exec("git", ["push", "-f"]);
+    await exec("git", ["push"]);
 };
 
 class Game {
@@ -471,7 +471,11 @@ This project is licensed under the [MIT License](LICENSE).`;
 
             this.updateGame();
 
-            await commitFile();
+            try{
+                await commitFile();
+            } catch(err) {
+                console.log(err.message);
+            }
         }
     }
 
